@@ -11,7 +11,8 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
 
   useEffect(() => {
     const fetchExercisesData = async () => {
-      const bodyPartsData = await fetchData(BASE_URL, exerciseOptions);
+      const bodyPartsData = await fetchData(`${BASE_URL}/bodyPartList`, exerciseOptions);
+
       setBodyParts(['all', ...bodyPartsData]);
     };
 
@@ -20,14 +21,16 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
 
   const handleSearch = async () => {
     if (search) {
-      const exercisesData = await fetchData(`${BASE_URL}/exercises`, exerciseOptions);
+      const exercisesData = await fetchData(`${BASE_URL}?limit=200`, exerciseOptions);
 
       const searchedExercises = exercisesData.filter(
         (item) => item.name.toLowerCase().includes(search)
-          || item.target.toLowerCase().includes(search)
-          || item.equipment.toLowerCase().includes(search)
-          || item.bodyPart.toLowerCase().includes(search),
+               || item.target.toLowerCase().includes(search)
+               || item.equipment.toLowerCase().includes(search)
+               || item.bodyPart.toLowerCase().includes(search),
       );
+
+      window.scrollTo({ top: 1800, left: 100, behavior: 'smooth' });
 
       setSearch('');
       setExercises(searchedExercises);
@@ -47,20 +50,13 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
           onChange={(e) => setSearch(e.target.value.toLowerCase())}
           placeholder="Search Exercises"
           type="text"
-          color='warning'
         />
-        <Button className="search-btn"
-          sx={{ bgcolor: '#FF2625', color: '#fff', textTransform: 'none', width: { lg: '173px', xs: '80px' }, height: '56px', position: 'absolute', right: '0px', fontSize: { lg: '20px', xs: '14px' } }}
-          onClick={handleSearch}>
+        <Button className="search-btn" sx={{ bgcolor: '#FF2625', color: '#fff', textTransform: 'none', width: { lg: '173px', xs: '80px' }, height: '56px', position: 'absolute', right: '0px', fontSize: { lg: '20px', xs: '14px' } }} onClick={handleSearch}>
           Search
         </Button>
       </Box>
       <Box sx={{ position: 'relative', width: '100%', p: '20px' }}>
-        <HorizontalScrollbar
-          data={bodyParts}
-          bodyPart={bodyPart}
-          setBodyPart={setBodyPart}
-        />
+        <HorizontalScrollbar data={bodyParts} bodyParts setBodyPart={setBodyPart} bodyPart={bodyPart} />
       </Box>
     </Stack>
   );

@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://exercisedb.p.rapidapi.com/exercises/bodyPartList';
+export const BASE_URL = 'https://exercisedb.p.rapidapi.com/exercises';

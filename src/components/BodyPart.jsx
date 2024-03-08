@@ -17,7 +17,10 @@ const BodyPart = ({ item, setBodyPart, bodyPart }) => (
     alignItems="center"
     justifyContent="center"
     className="bodyPart-card"
-    sx={bodyPart === item ? { ...commonStyles, borderTop: '4px solid #FF2625' } : commonStyles}    onClick={() => {
+    sx={bodyPart === item ?
+      { ...commonStyles, borderTop: '4px solid #FF2625' }
+      : commonStyles}
+    onClick={() => {
       setBodyPart(item);
       window.scrollTo({ top: 1800, left: 100, behavior: 'smooth' });
     }}

@@ -5,7 +5,7 @@ import Exercises from '../components/Exercises.jsx'
 import { Box } from '@mui/material'
 
 const Home = () => {
-  const [exercise, setExercises] = useState([]);
+  const [exercises, setExercises] = useState([]);
   const [bodyPart, setBodyPart] = useState('all');
 
   return (
@@ -18,8 +18,9 @@ const Home = () => {
       />
       <Exercises
         setExercises={setExercises}
+        exercises={exercises} 
         bodyPart={bodyPart}
-        serBodyPart={setBodyPart} />
+      />
     </Box>
   )
 }
