@@ -1,6 +1,30 @@
 import React from 'react';
 import { Stack, Typography } from '@mui/material';
-import Icon from '../assets/gym.png';
+import AllIcon from '../assets/all.svg';
+import BackIcon from '../assets/back.webp';
+import CardioIcon from '../assets/cardio.svg';
+import ChestIcon from '../assets/chest.svg';
+import LowerArmIcon from '../assets/lower-arm.svg';
+import LowerLegIcon from '../assets/lower-leg.svg';
+import NeckIcon from '../assets/neck.svg';
+import ShouldersIcon from '../assets/shoulders.svg';
+import UppererArmIcon from '../assets/upper-arm.svg';
+import UpperLegIcon from '../assets/upper-leg.svg';
+import WaistIcon from '../assets/waist.svg';
+
+const icons = {
+  all: AllIcon,
+  back: BackIcon,
+  cardio: CardioIcon,
+  chest: ChestIcon,
+  ["lower arms"]: LowerArmIcon,
+  ["lower legs"]: LowerLegIcon,
+  neck: NeckIcon,
+  shoulders: ShouldersIcon,
+  ["upper arms"]: UppererArmIcon,
+  ["upper legs"]: UpperLegIcon,
+  waist: WaistIcon
+}
 
 const commonStyles = {
   background: '#fff',
@@ -11,8 +35,11 @@ const commonStyles = {
   gap: '47px',
 };
 
-const BodyPart = ({ item, setBodyPart, bodyPart }) => (
-  <Stack
+const BodyPart = ({ item, setBodyPart, bodyPart }) => {
+  console.log('item', item)
+  console.log(bodyPart)
+
+  return <Stack
     type="button"
     alignItems="center"
     justifyContent="center"
@@ -25,9 +52,9 @@ const BodyPart = ({ item, setBodyPart, bodyPart }) => (
       window.scrollTo({ top: 1800, left: 100, behavior: 'smooth' });
     }}
   >
-    <img src={Icon} alt="dumbbell" style={{ width: '40px', height: '40px' }} />
+    <img src={icons[item]} alt="dumbbell" style={{ width: '40px', height: '40px' }} />
     <Typography fontSize="24px" fontWeight="bold" fontFamily="Alegreya" color="#3A1212" textTransform="capitalize"> {item}</Typography>
   </Stack>
-);
+};
 
 export default BodyPart;

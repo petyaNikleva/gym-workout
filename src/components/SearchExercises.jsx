@@ -12,7 +12,7 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
   useEffect(() => {
     const fetchExercisesData = async () => {
       const bodyPartsData = await fetchData(`${BASE_URL}/bodyPartList`, exerciseOptions);
-
+ 
       setBodyParts(['all', ...bodyPartsData]);
     };
 

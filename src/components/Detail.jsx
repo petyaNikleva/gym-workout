@@ -38,7 +38,7 @@ const Detail = ({ exerciseDetail }) => {
             {name}
           </Typography>
           <Typography variant='h6'>
-            Exercises keep you string. <b> {name} </b> {` `}
+            Exercises keep you strong. <b> {name} </b> {` `}
             is one of the best exercises to target your <b>{target}</b>.
             It will help you improve your mood and gain energy.
           </Typography>
